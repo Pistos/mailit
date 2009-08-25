@@ -212,7 +212,7 @@ BODY
     alias [] get_header
 
     def header_string
-      headers.join("\r\n") << "\r\n\r\n"
+      headers.map{|key,value| "#{key}: #{value}"}.join("\r\n") << "\r\n\r\n"
     end
 
     MIME_INDICATOR = "This is a multi-part message in MIME format.\r\n\r\n--%s\r\nContent-Type: multipart/alternative; boundary=%p"
